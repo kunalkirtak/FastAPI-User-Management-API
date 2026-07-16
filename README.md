@@ -170,7 +170,7 @@ FastAPI-User-Management-API/
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/<your-username>/FastAPI-User-Management-API.git
+git clone https://github.com/kunalkirtak/FastAPI-User-Management-API.git
 cd FastAPI-User-Management-API
 
 # 2. Create and activate a virtual environment
