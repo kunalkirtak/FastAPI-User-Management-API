@@ -1,0 +1,40 @@
+# --- Version control / docs -------------------------------------------------
+.git
+.gitignore
+docs/
+*.md
+!README.md
+
+# --- Python -------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- Virtual environments -------------------------------------------------------
+venv/
+.venv/
+env/
+
+# --- Local secrets / data -----------------------------------------------------
+.env
+.env.*
+!.env.example
+*.db
+*.sqlite3
+data/
+
+# --- Tests (not needed at runtime) -------------------------------------------
+tests/
+
+# --- IDE / OS --------------------------------------------------------------------
+.vscode/
+.idea/
+.DS_Store
+
+# --- Docker itself (no need to COPY these into the image) ------------------------
+Dockerfile
+docker-compose.yml
