@@ -14,7 +14,6 @@ A production-ready **CRUD API for user management**, built with **FastAPI**, **S
 - [Folder Structure](#folder-structure)
 - [Installation](#installation)
 - [Running the API](#running-the-api)
-- [Screenshots](#screenshots)
 - [API Endpoints](#api-endpoints)
 - [Observability](#observability)
 - [Configuration](#configuration)
@@ -151,6 +150,9 @@ FastAPI-User-Management-API/
 ├── docs/
 │     └── requests.http           # Sample requests (VS Code REST Client, or read as reference)
 │
+├── output/
+│     └── output images # Screenshots of the UI interface working
+│
 ├── requirements.txt
 ├── README.md
 ├── .env
@@ -235,13 +237,6 @@ A ready-made `docs/requests.http` file has requests for every endpoint (includin
 
 ---
 
-## Screenshots
-
-> Once the API is running locally, visit `http://127.0.0.1:8000/docs` for the interactive Swagger UI. Add a screenshot to `docs/swagger-ui.png` and embed it here:
->
-> `![Swagger UI](docs/swagger-ui.png)`
-
----
 
 ## API Endpoints
 
