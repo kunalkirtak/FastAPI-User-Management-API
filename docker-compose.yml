@@ -1,0 +1,53 @@
+# Usage:
+#   docker compose up --build                    -> API only, using SQLite (zero config)
+#   docker compose --profile postgres up --build  -> API + PostgreSQL
+#
+# When using the postgres profile, set DATABASE_URL in your .env to point at
+# the `db` service, e.g.:
+#   DATABASE_URL=postgresql://postgres:postgres@db:5432/users_db
+#
+# When left at its SQLite default (sqlite:///./data/app.db), app/database.py
+# creates the data/ directory automatically, which lines up exactly with the
+# volume mounted below -- so the database file survives container restarts
+# with no extra configuration either way.
+
+services:
+  api:
+    build: .
+    container_name: fastapi_user_management_api
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - sqlite_data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health', timeout=3)"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  db:
+    image: postgres:16-alpine
+    container_name: fastapi_user_management_db
+    profiles: ["postgres"]
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-users_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  sqlite_data:
+  postgres_data:
