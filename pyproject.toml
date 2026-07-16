@@ -1,0 +1,19 @@
+[project]
+name = "fastapi-user-management-api"
+version = "1.0.0"
+description = "A production-ready CRUD API for user management built with FastAPI, SQLAlchemy, and Pydantic."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
