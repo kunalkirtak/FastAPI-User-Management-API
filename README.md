@@ -153,6 +153,7 @@ FastAPI-User-Management-API/
 │
 ├── requirements.txt
 ├── README.md
+├── .env
 ├── .env.example
 ├── .gitignore
 ├── .dockerignore
